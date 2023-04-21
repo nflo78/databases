@@ -3,8 +3,9 @@ CREATE DATABASE chat;
 USE chat;
 
 CREATE TABLE users (
-  id integer PRIMARY KEY,
-  username text
+  id integer NOT NULL AUTO_INCREMENT,
+  username varchar(20) UNIQUE,
+  PRIMARY KEY (id)
 );
 
 CREATE TABLE rooms (
@@ -14,23 +15,14 @@ CREATE TABLE rooms (
 
 CREATE TABLE messages (
   /* Describe your table here.*/
-  message_id integer PRIMARY KEY,
+  message_id integer NOT NULL AUTO_INCREMENT,
   messageText text,
-  user_id integer,
-  room_id integer,
-  FOREIGN KEY (user_id) REFERENCES users(id),
-  FOREIGN KEY (room_id) REFERENCES rooms(id)
+  userid integer,
+  roomname text,
+  PRIMARY KEY (message_id)
 );
 
 /* Create other tables and define schemas for them here! */
-
-CREATE TABLE friends (
-  count integer PRIMARY KEY,
-  user_id integer,
-  friend_id integer,
-  FOREIGN KEY (user_id) REFERENCES users(id),
-  FOREIGN KEY (friend_id) REFERENCES users(id)
-);
 
 
 
